@@ -20,6 +20,9 @@ endif()
 set(CMAKE_CXX_FLAGS_DEBUG "-g")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 
+set(SUPPORT_SCREEN_CAPTURE OFF)
+set(SUPPORT_GIF_RECORDING OFF)
+
 # TODO: Move this to cmake/FindRaylib.cmake?
 find_package(raylib 3.5.0)
 if (NOT raylib_FOUND)
