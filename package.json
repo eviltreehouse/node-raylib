@@ -10,6 +10,7 @@
     "postinstall": "cmake-js compile",
     "clean": "rm -rf build",
     "compile": "cmake-js compile",
+    "compile:prod": "RL_PRODUCTION=1 cmake-js compile",
     "prepkg": "npm run compile",
     "pkg": "node src/scripts/pkg.js",
     "start": "bin/node-raylib examples/core/core_basic_window.js"

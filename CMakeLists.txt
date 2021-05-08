@@ -20,9 +20,14 @@ endif()
 set(CMAKE_CXX_FLAGS_DEBUG "-g")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 
-# ...Or `cmake-js compile --CDSUPPORT_SCREEN_CAPTURE:BOOL=OFF --CDSUPPORT_GIF_RECORDING:BOOL=OFF`
-# set(SUPPORT_SCREEN_CAPTURE OFF)
-# set(SUPPORT_GIF_RECORDING OFF)
+# Tick `RL_PRODUCTION` to remove some utility functionality built in
+# to raylib:
+if (DEFINED ENV{RL_PRODUCTION})
+  message(NOTICE "Building raylib in **PRODUCTION** mode (image capturing and trace log disabled.)")
+  set(SUPPORT_SCREEN_CAPTURE OFF CACHE BOOL "" FORCE)
+  set(SUPPORT_GIF_RECORDING OFF CACHE BOOL "" FORCE)
+  set(SUPPORT_TRACELOG OFF CACHE BOOL "" FORCE)
+endif()
 
 # TODO: Move this to cmake/FindRaylib.cmake?
 find_package(raylib 3.5.0)
